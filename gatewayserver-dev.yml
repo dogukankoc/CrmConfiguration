@@ -30,13 +30,11 @@ spring:
               - DELETE
               - PUT
               - OPTIONS
-            allowedHeaders: "*"
+            allowedHeaders:
+              - "Authorization"
+              - "Cache-Control"
+              - "Content-Type"
       discovery:
         locator:
           enabled: true
           lower-case-service-id: true
-      
-
-
-          # lb : loadbalancing, her service için routes eklememiz gerekiyor.
-          
