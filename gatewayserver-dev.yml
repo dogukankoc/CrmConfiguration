@@ -15,6 +15,22 @@ spring:
     name: gatewayserver
   cloud:
     gateway:
+      default-filters:
+        - RemoveRequestHeader=Origin
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+            - "http://localhost:4200"
+            allowCredentials: true
+            allowedMethods:
+              - GET
+              - POST
+              - DELETE
+              - PUT
+              - OPTIONS
+            allowedHeaders: "*"
       discovery:
         locator:
           enabled: true
