@@ -11,20 +11,15 @@ eureka:
     preferIpAddress: true
   
 spring:
+  application:
+    name: gatewayserver
   cloud:
     gateway:
-      mvc:
-        routes[0]:
-          id: customerservice
-          predicates[0]: Path=customerservice/api/v1/cities/**
-          uri: lb://customerservice           
-        routes[1]: 
-          id: discoveryserver
-          predicates[0]: Path=/eureka/web
-          filters[0]: SetPath=/
-          uri: http://localhost:8888
-
-
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      
 
 
           # lb : loadbalancing, her service için routes eklememiz gerekiyor.
